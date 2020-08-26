@@ -1,13 +1,16 @@
-require_relative 'opal-rollbar/version'
+# rubocop:disable Naming/FileName
 
-if RUBY_ENGINE == 'opal'
-  require_relative 'opal-rollbar/rollbar'
-  require_relative 'opal-rollbar/rollbar/rollbar_wrapper.rb'
+# frozen_string_literal: true
 
-  if `Opal.global.Rollbar === undefined`
-    raise 'No Rollbar available'
-  end
+require_relative "opal-rollbar/version"
+
+if RUBY_ENGINE == "opal"
+  require_relative "opal-rollbar/rollbar"
+  require_relative "opal-rollbar/rollbar/rollbar_wrapper.rb"
+
+  raise "No Rollbar available" if `Opal.global.Rollbar === undefined`
 else
-  require 'opal'
-  Opal.append_path File.expand_path('../', __FILE__).untaint
+  require "opal"
+
+  Opal.append_path File.expand_path("../", __FILE__).untaint
 end

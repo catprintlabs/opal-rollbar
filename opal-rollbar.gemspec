@@ -1,17 +1,18 @@
 
-# lib = File.expand_path("../lib", __FILE__)
-# $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-$:.push File.expand_path('../lib/', __FILE__)
+# frozen_string_literal: true
+
+$LOAD_PATH.push File.expand_path("../lib/", __FILE__)
+
 require "opal-rollbar/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "opal-rollbar"
-  spec.version       = '1.1'
-  spec.authors       = ["jmenaguale22"]
-  spec.email         = ["jasonm@catprint.com"]
+  spec.version       = OpalRollbar::VERSION
+  spec.authors       = %w[jmenaguale22 adamcreekroad]
+  spec.email         = %w[jasonm@catprint.com adam@adam-george.com]
 
-  spec.summary       = %q{Allows for Opal client-side Rollbar}
-  spec.homepage      = "https://github.com/jmenaguale22/opal-rollbar"
+  spec.summary       = "Allows for Opal client-side Rollbar"
+  spec.homepage      = "https://github.com/catprintlabs/opal-rollbar"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
@@ -21,7 +22,10 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.16"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_dependency "opal"
+
+  spec.add_development_dependency "bundler"
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "rubocop", "~> 0.51.0"
 end

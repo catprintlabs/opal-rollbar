@@ -1,6 +1,7 @@
-require_relative 'rollbar/rollbar_wrapper'
+require_relative "rollbar/rollbar_wrapper"
+
 module Rollbar
-  METHODS = %i[error warning info critical debug log]
+  METHODS = %i[error warning info critical debug log configure]
 
   class << self
     def instance
