@@ -1,6 +1,6 @@
 module Rollbar
   class RollbarWrapper
-    include Native
+    include Native::Wrapper
 
     def initialize(native)
       @native = native
